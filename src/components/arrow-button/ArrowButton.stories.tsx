@@ -1,20 +1,27 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import arrow from '../../images/arrow.svg';
+import styles from './ArrowButton.module.scss';
+import clsx from 'clsx';
 
-import { ArrowButton } from './ArrowButton';
+export type OnClick = () => void;
 
-const meta: Meta<typeof ArrowButton> = {
-	component: ArrowButton,
+export type ArrowButtonProps = {
+	onClick: OnClick;
+	isOpen: boolean;
 };
 
-export default meta;
-type Story = StoryObj<typeof ArrowButton>;
-
-export const ArrowButtonStory: Story = {
-	render: () => {
-		return (
-			<>
-				<ArrowButton />
-			</>
-		);
-	},
+export const ArrowButton = ({ onClick, isOpen }: ArrowButtonProps) => {
+	return (
+		<div
+			role='button'
+			aria-label='Open/Close article parameters form'
+			tabIndex={0}
+			className={clsx(styles.container, { [styles.container_open]: isOpen })}
+			onClick={onClick}>
+			<img
+				src={arrow}
+				alt='arrow icon'
+				className={clsx(styles.arrow, { [styles.arrow_open]: isOpen })}
+			/>
+		</div>
+	);
 };
