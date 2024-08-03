@@ -12,10 +12,10 @@ import {
 } from '../../constants/articleProps';
 
 export const App = () => {
-	const [state, setState] = useState(defaultArticleState);
+	const [Articlestate, SetArticleState] = useState(defaultArticleState);
 
 	const handleSubmit = (data: ArticleStateType) => {
-		setState(data);
+		SetArticleState(data);
 	};
 
 	return (
@@ -23,14 +23,17 @@ export const App = () => {
 			className={styles.main}
 			style={
 				{
-					'--font-family': state.fontFamilyOption.value,
-					'--font-size': state.fontSizeOption.value,
-					'--font-color': state.fontColor.value,
-					'--container-width': state.contentWidth.value,
-					'--bg-color': state.backgroundColor.value,
+					'--font-family': Articlestate.fontFamilyOption.value,
+					'--font-size': Articlestate.fontSizeOption.value,
+					'--font-color': Articlestate.fontColor.value,
+					'--container-width': Articlestate.contentWidth.value,
+					'--bg-color': Articlestate.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm onSubmit={handleSubmit} defaultStateForm={state} />
+			<ArticleParamsForm
+				onSubmit={handleSubmit}
+				defaultStateForm={Articlestate}
+			/>
 
 			<Article />
 		</main>
